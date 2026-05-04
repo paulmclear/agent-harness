@@ -1,0 +1,31 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Agent sandbox output (scratch dir)
+sandbox/
+
+# Saved transcripts
+transcripts/
+
+# Workflow run outputs (per-run subfolders under output/)
+output/
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/

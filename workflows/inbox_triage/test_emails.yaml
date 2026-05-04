@@ -1,0 +1,107 @@
+test_emails:
+  - scenario_name: test-1-ambiguous
+    subject: Quick question
+    body: Hi, just wanted to ask about your services.
+    expected_classification: "sales_lead"
+    expected_urgency: "low"
+    expected_team: "sales"
+
+  - scenario_name: test-2-spam
+    subject: Earn £5,000 per week from home
+    body: Earn £5,000 per week from home
+    expected_classification: "spam"
+    expected_urgency: "low"
+    expected_team: "n/a"
+
+  - scenario_name: test-3-billing-issue
+    subject: Invoice discrepancy
+    body: Hello, the amount on invoice 1042 does not match the agreed fee. 
+    expected_classification: "billing"
+    expected_urgency: "medium or high"
+    expected_team: "finance"
+
+  - scenario_name: test-4-complaint
+    subject: Formal complaint
+    body: We are unhappy with the quality of the recent deliverable and would like this escalated.
+    expected_classification: "client_request"
+    expected_urgency: "high"
+    expected_team: "delivery"
+    expected_human_review_required: true
+
+  - scenario_name: test-5-urgent-access
+    subject: "Urgent – access issue with Compass"
+    body: |
+      Hi team,
+
+      We cannot access the Compass dashboard this morning and have a board meeting at 11am.
+      Please can someone help as soon as possible?
+
+      Thanks,
+      Sarah
+      Head of Compliance
+    expected_classification: "support_issue"
+    expected_urgency: "high"
+    expected_team: "support"
+    expected_human_review_required: true
+
+  - scenario_name: test-6-new-client-proposal
+    subject: "Request for proposal – data strategy project"
+    body: |
+      Hello,
+
+      We are a mid-sized financial services firm looking to modernise our data infrastructure.
+      We came across your work and would like to discuss a potential engagement.
+      Could you send over a capabilities deck and indicative pricing?
+
+      Best regards,
+      James Hollis
+      CTO, Meridian Capital
+    expected_classification: "sales_lead"
+    expected_urgency: "medium"
+    expected_team: "sales"
+    expected_human_review_required: false
+
+  - scenario_name: test-7-legal-threat
+    subject: "Notice of legal action"
+    body: |
+      Dear Sir/Madam,
+
+      Following our repeated attempts to resolve the outstanding issues with the project
+      delivered in March, we have instructed our legal counsel to initiate proceedings.
+      Please ensure all relevant correspondence is preserved.
+
+      Regards,
+      Helena Marsh
+    expected_classification: "client_request"
+    expected_urgency: "high"
+    expected_team: "operations"
+    expected_human_review_required: true
+
+  - scenario_name: test-8-routine-deliverable
+    subject: "Please find attached the updated report"
+    body: |
+      Hi,
+
+      As discussed in our call last week, please find attached the revised Q1 performance
+      report. Let me know if you need any changes before Friday.
+
+      Kind regards,
+      Tom
+    expected_classification: "client_request"
+    expected_urgency: "low"
+    expected_team: "delivery"
+    expected_human_review_required: false
+
+  - scenario_name: test-9-phishing
+    subject: "Your account has been suspended – verify now"
+    body: |
+      Dear Customer,
+
+      Your account has been suspended due to unusual activity. Click the link below
+      immediately to restore access and avoid permanent suspension.
+
+      http://secure-verify-login.ru/restore
+    expected_classification: "spam"
+    expected_urgency: "low"
+    expected_team: "n/a"
+    expected_human_review_required: false

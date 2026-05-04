@@ -1,0 +1,250 @@
+Compass:
+  client: ClientCo
+  programme: Compass Rollout
+  overall_rag: Amber
+  last_updated: "2026-04-30"
+  summary: >
+    Phase 1 is live and in hypercare. The dashboard filtering enhancement has completed UAT and is
+    pending client sign-off for production release. Phase 2 scope is agreed in principle but formal
+    sign-off is six weeks overdue, creating downstream timeline risk. An isolated access issue for
+    one compliance officer remains under investigation despite a fix being deployed in sprint 8.
+  milestones:
+    - name: Phase 1 go-live
+      status: Complete
+      date: "2026-01-10"
+    - name: Hypercare period end
+      status: Complete
+      date: "2026-02-10"
+    - name: Dashboard filtering enhancement – UAT complete
+      status: Complete
+      date: "2026-04-24"
+    - name: Dashboard filtering enhancement – production release
+      status: Awaiting client sign-off
+      target_date: "2026-05-08"
+    - name: Phase 2 scope sign-off
+      status: Overdue
+      original_date: "2026-02-28"
+      revised_date: TBC
+    - name: Phase 2 kick-off
+      status: Blocked
+      depends_on: Phase 2 scope sign-off
+  financials:
+    contract_value: "£420,000"
+    invoiced_to_date: "£275,000"
+    outstanding_change_requests: 2
+    cr_value_pending: "£38,000"
+  raid:
+    risks:
+      - id: R1
+        description: Phase 2 timeline slippage due to delayed scope sign-off (6 weeks overdue)
+        rating: Amber
+        owner: Tom Willis
+        mitigation: Escalation to steering committee; standing agenda item
+      - id: R2
+        description: Client audit readiness risk if bulk import audit trail gap is not clearly documented for historical period
+        rating: Amber
+        owner: Amira Osei
+        mitigation: Findings shared with client; historical reconciliation recommended but not yet actioned
+    issues:
+      - id: I1
+        description: Dashboard audit trail export intermittently inaccessible for one compliance officer despite sprint 8 fix
+        status: Under investigation
+        raised_by: Sarah Ahmed
+        raised_date: "2026-04-25"
+        priority: High
+      - id: I2
+        description: Phase 2 scope sign-off overdue by 6 weeks; downstream kick-off blocked
+        status: Open
+        raised_by: Tom Willis
+        raised_date: "2026-03-05"
+        priority: High
+    assumptions:
+      - Phase 2 budget has been approved internally at ClientCo
+      - Plenitude team composition will remain stable through Phase 2
+    dependencies:
+      - ClientCo IT to provision remaining user accounts (1 outstanding)
+      - ClientCo legal to review Phase 2 contract extension before sign-off
+
+DataBridge Migration:
+  client: Meridian Analytics
+  programme: DataBridge Legacy Migration
+  overall_rag: Green
+  last_updated: "2026-04-30"
+  summary: >
+    Delivery is tracking 15% ahead of plan. UAT completed successfully with all acceptance criteria
+    met. Error rate of 0.003% against a 0.01% threshold. Go-live approved for 5 May 2026.
+    Cutover runbook finalised and signed off. Team morale is high and senior stakeholder sentiment
+    is excellent. Post-go-live support model agreed.
+  milestones:
+    - name: Historical data migration – cohorts 2018–2022
+      status: Complete
+      date: "2026-04-08"
+    - name: Sprint 6 delivery
+      status: Complete
+      date: "2026-04-10"
+    - name: UAT start
+      status: Complete
+      date: "2026-04-14"
+    - name: UAT complete and signed off
+      status: Complete
+      date: "2026-04-29"
+    - name: Go/no-go decision
+      status: Approved (Go)
+      date: "2026-04-28"
+    - name: Production cutover
+      status: Scheduled
+      target_date: "2026-05-05"
+    - name: Post-go-live support period end
+      status: Upcoming
+      target_date: "2026-05-26"
+  financials:
+    contract_value: "£185,000"
+    invoiced_to_date: "£162,000"
+    outstanding_change_requests: 0
+    cr_value_pending: "£0"
+  raid:
+    risks:
+      - id: R1
+        description: Post-cutover rollback complexity if data volume exceeds 72-hour window assumptions
+        rating: Low
+        owner: Elena Vasquez
+        mitigation: Rollback runbook prepared; tested in staging. Manual reconciliation check added at T+30 min.
+    issues: []
+    assumptions:
+      - Meridian Analytics infrastructure team available for on-call during cutover window
+      - No change freeze in effect at Meridian Analytics for the cutover date
+    dependencies:
+      - Meridian Analytics to provide confirmed maintenance window approval by 2 May
+
+Synergy CRM:
+  client: Hartwell & Partners
+  programme: Synergy CRM Implementation
+  overall_rag: Red
+  last_updated: "2026-04-30"
+  summary: >
+    The programme has experienced a significant production incident (data sync failures causing
+    24–48 hour data staleness for the sales team). Root cause was a rate-limiting conflict between
+    the CRM API and middleware polling interval. Emergency fix deployed 2 April. System has been
+    stable for 28 days but user trust has been damaged. Phase 2 budget approval is still pending
+    board sign-off. Executive confidence is low. Recovery of stakeholder relationship is the
+    primary priority for the near term.
+  milestones:
+    - name: Phase 1 go-live
+      status: Complete
+      date: "2026-02-01"
+    - name: Emergency fix – polling interval and rate-limit resilience
+      status: Complete
+      date: "2026-04-02"
+    - name: Post-incident review
+      status: Complete
+      date: "2026-04-10"
+    - name: Phase 2 scoping and budget approval
+      status: Blocked
+      depends_on: Board budget decision (expected board meeting not yet confirmed)
+    - name: Phase 2 kick-off
+      status: On hold
+  financials:
+    contract_value: "£310,000"
+    invoiced_to_date: "£195,000"
+    outstanding_change_requests: 1
+    cr_value_pending: "£12,000"
+    notes: Change request covers emergency fix out-of-scope work; client has not yet approved.
+  raid:
+    risks:
+      - id: R1
+        description: Rate-limiting recurrence risk if contact volume increases 40% next quarter as planned by client
+        rating: Amber
+        owner: Raj Mehta
+        mitigation: Alert thresholds added; architecture review recommended before volume uplift
+      - id: R2
+        description: Loss of client confidence leading to contract non-renewal or scope reduction
+        rating: Red
+        owner: Claire Nguyen
+        mitigation: Weekly executive touchpoints; recovery plan presented in steering meeting
+      - id: R3
+        description: Phase 2 delayed indefinitely if board does not approve budget
+        rating: Amber
+        owner: Linda Park
+        mitigation: Options paper prepared; Claire to seek clarity on board timeline
+    issues:
+      - id: I1
+        description: Two senior account managers reverting to manual spreadsheets; system trust not yet restored
+        status: Open
+        raised_by: Marcus Reid
+        raised_date: "2026-04-29"
+        priority: High
+      - id: I2
+        description: Emergency fix change request (£12k) not yet approved by client
+        status: Open
+        raised_by: Claire Nguyen
+        raised_date: "2026-04-15"
+        priority: Medium
+    assumptions:
+      - Board will make Phase 2 budget decision at May or June meeting
+    dependencies:
+      - Hartwell & Partners board budget approval for Phase 2
+
+Nexus Security Review:
+  client: Quantum Financial
+  programme: Annual Security Review and Penetration Test
+  overall_rag: Green
+  last_updated: "2026-04-30"
+  summary: >
+    All 14 in-scope systems have been reviewed. Penetration testing completed across external and
+    internal attack surfaces. Three findings total: two low severity, one informational. Zero
+    critical or high findings. Overall security posture rated Strong. Final report issued and
+    approved by client. Executive summary ready for board presentation on 8 May. Client has
+    indicated intent to renew the engagement annually.
+  milestones:
+    - name: External perimeter testing
+      status: Complete
+      date: "2026-03-28"
+    - name: Internal application layer testing
+      status: Complete
+      date: "2026-04-18"
+    - name: Final findings walkthrough
+      status: Complete
+      date: "2026-04-22"
+    - name: Final report issued
+      status: Complete
+      date: "2026-04-30"
+    - name: Board presentation
+      status: Scheduled
+      target_date: "2026-05-08"
+    - name: Remediation deadline (low-severity findings)
+      status: Upcoming
+      target_date: "2026-05-16"
+  financials:
+    contract_value: "£95,000"
+    invoiced_to_date: "£85,500"
+    outstanding_change_requests: 0
+    cr_value_pending: "£0"
+  findings_summary:
+    critical: 0
+    high: 0
+    medium: 0
+    low: 2
+    informational: 1
+    overall_posture: Strong
+  findings:
+    - id: F1
+      severity: Low
+      title: TLS 1.1 enabled on internal reporting portal
+      recommendation: Disable TLS 1.1 and enforce TLS 1.2 minimum
+      status: Remediation assigned to infrastructure team; deadline 16 May
+    - id: F2
+      severity: Low
+      title: HTTP security headers missing on internal admin interface
+      recommendation: Add Content-Security-Policy and X-Frame-Options headers
+      status: Remediation assigned to infrastructure team; deadline 16 May
+    - id: F3
+      severity: Informational
+      title: Password policy does not enforce complexity requirements for service accounts
+      recommendation: Review service account password policy in next policy refresh cycle
+      status: Logged in client risk register; no immediate action required
+  raid:
+    risks: []
+    issues: []
+    assumptions:
+      - Remediation of low-severity findings completed by Quantum Financial by 16 May
+    dependencies: []

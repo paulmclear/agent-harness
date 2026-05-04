@@ -1,0 +1,27 @@
+{
+  "calendar_entry": {
+    "meeting_title": "Quarterly Compass Steering Committee",
+    "meeting_description": "Quarterly steering committee to review Compass rollout progress, outstanding issues, and next phase priorities.",
+    "participants": [
+      "Sarah Ahmed - Head of Compliance, ClientCo",
+      "Tom Willis - Programme Manager, ClientCo",
+      "Paul McLear - Director, Plenitude"
+    ]
+  },
+  "previous_meeting_notes": [
+    "Client requested improved dashboard filtering.",
+    "Access provisioning delays affected two business users.",
+    "Phase 2 delivery plan to be agreed by end of month."
+  ],
+  "recent_email_snippets": [
+    "Client asked whether dashboard access issues are now fully resolved.",
+    "Tom mentioned concern about slippage against the Phase 2 target date.",
+    "Sarah wants a clearer view of ownership for open actions."
+  ],
+  "project_status_notes": [
+    "Dashboard filtering enhancement is in UAT.",
+    "Access issue fix deployed last week.",
+    "Phase 2 scope still awaiting sign-off.",
+    "Open RAID item: delivery timeline risk rated amber."
+  ]
+}

@@ -1,0 +1,70 @@
+# hubspot_client.py
+
+import os
+from typing import Any
+
+from dotenv import load_dotenv
+from hubspot import HubSpot
+from hubspot.crm.contacts import PublicObjectSearchRequest, ApiException
+
+load_dotenv()
+
+
+class HubSpotService:
+    def __init__(self) -> None:
+        access_token = os.getenv("HUBSPOT_ACCESS_TOKEN")
+
+        if not access_token:
+            raise ValueError("HUBSPOT_ACCESS_TOKEN is not set")
+
+        self.client = HubSpot(access_token=access_token)
+
+    def search_contacts_by_email(
+        self,
+        email: str,
+        limit: int = 5,
+    ) -> list[dict[str, Any]]:
+        """
+        Search HubSpot contacts by email address.
+        """
+
+        request = PublicObjectSearchRequest(
+            filter_groups=[
+                {
+                    "filters": [
+                        {
+                            "propertyName": "email",
+                            "operator": "EQ",
+                            "value": email,
+                        }
+                    ]
+                }
+            ],
+            properties=[
+                "email",
+                "firstname",
+                "lastname",
+                "company",
+                "jobtitle",
+                "phone",
+                "lifecyclestage",
+            ],
+            limit=limit,
+        )
+
+        try:
+            response = self.client.crm.contacts.search_api.do_search(
+                public_object_search_request=request
+            )
+        except ApiException as exc:
+            raise RuntimeError(f"HubSpot contacts search failed: {exc}") from exc
+
+        return [
+            {
+                "id": contact.id,
+                "properties": contact.properties,
+                "created_at": str(contact.created_at),
+                "updated_at": str(contact.updated_at),
+            }
+            for contact in response.results
+        ]

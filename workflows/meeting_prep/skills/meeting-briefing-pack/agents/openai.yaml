@@ -1,0 +1,12 @@
+interface:
+  display_name: Meeting Briefing Pack
+  short_description: Prepare concise, grounded client meeting briefs.
+  icon: "\U0001F5C2\uFE0F"
+  brand_color: '#3B82F6'
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

@@ -1,0 +1,60 @@
+test_meetings:
+  # ── Case 1: Rich data, conflicting signals (project notes say fixed; client still worried) ──
+  - id: compass_quarterly_steering
+    title: "Quarterly Compass Steering Committee"
+    participants:
+      - "Sarah Ahmed – Head of Compliance, ClientCo"
+      - "Tom Willis – Programme Manager, ClientCo"
+      - "Paul McLear – Director, Plenitude"
+    calendar_description: >
+      Quarterly steering committee to review Compass rollout progress, outstanding issues,
+      and next phase priorities. 60 minutes. Held at ClientCo offices.
+    project_name: Compass
+
+  # ── Case 2: Healthy delivery, go-live imminent, positive tone ──
+  - id: databridge_go_live_readiness
+    title: "DataBridge Migration – Go-Live Readiness Review"
+    participants:
+      - "Priya Nair – Head of Data Engineering, Meridian Analytics"
+      - "Ben Cho – Technical Lead, Meridian Analytics"
+      - "Yusuf Okafor – Delivery Manager, Plenitude"
+      - "Elena Vasquez – Data Architect, Plenitude"
+    calendar_description: >
+      Final readiness review before 5 May production cutover. Confirm go/no-go,
+      walk through cutover runbook, agree on-call rotas, and close out open actions.
+    project_name: DataBridge Migration
+
+  # ── Case 3: Crisis / executive escalation, damaged trust, Phase 2 in jeopardy ──
+  - id: synergy_crm_executive_review
+    title: "Synergy CRM – Executive Recovery Review"
+    participants:
+      - "Marcus Reid – COO, Hartwell & Partners"
+      - "Linda Park – IT Director, Hartwell & Partners"
+      - "Claire Nguyen – Account Director, Plenitude"
+      - "Raj Mehta – Solutions Architect, Plenitude"
+    calendar_description: >
+      Executive-level meeting to review the post-incident status of Synergy CRM,
+      restore confidence in the programme, and agree the path forward for Phase 2.
+      Marcus Reid has indicated he wants straight answers and a clear recovery plan.
+    project_name: Synergy CRM
+
+  # ── Case 4: No participants (edge case – system should not hallucinate roles) ──
+  - id: internal_review_no_participants
+    title: "Internal Delivery Governance Review – Q2"
+    participants: []
+    calendar_description: >
+      Internal Plenitude review of all active programme statuses for Q2 governance.
+      No external attendees. Agenda to be set on the day.
+    project_name: Compass
+
+  # ── Case 5: Clean close-out, no risks, board presentation prep ──
+  - id: nexus_board_presentation_prep
+    title: "Nexus Security Review – Board Presentation Preparation"
+    participants:
+      - "Daniel Chen – CISO, Quantum Financial"
+      - "Rachel Torres – Security Operations Lead, Quantum Financial"
+      - "Imogen Walsh – Lead Consultant, Plenitude"
+    calendar_description: >
+      Preparatory session ahead of the 8 May board presentation. Agree structure,
+      confirm key messages, rehearse likely board questions, and finalise slide deck.
+    project_name: Nexus Security Review

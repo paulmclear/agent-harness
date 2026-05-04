@@ -1,0 +1,183 @@
+Compass:
+  - date: "2026-04-28"
+    from: Tom Willis <t.willis@clientco.com>
+    to: Paul McLear <paul.mclear@plenitude.com>
+    subject: "RE: Phase 2 timeline – urgent"
+    snippet: >
+      Paul, I need to flag this again. We are now six weeks past the sign-off deadline and my team
+      is being asked about Phase 2 start dates. I can't keep telling them it's imminent. What's the
+      hold-up on scope confirmation? Can we get on a call this week? This is becoming a credibility
+      issue internally for me.
+
+  - date: "2026-04-25"
+    from: Sarah Ahmed <s.ahmed@clientco.com>
+    to: Paul McLear <paul.mclear@plenitude.com>
+    subject: "Dashboard access – still seeing intermittent issues"
+    snippet: >
+      Hi Paul. One of our compliance officers flagged this morning that she still can't access the
+      audit trail export function. I thought this was resolved last sprint? Can you look into it
+      urgently – we have an internal audit review next Friday and need this working reliably.
+      This is the third time she has raised it.
+
+  - date: "2026-04-22"
+    from: Paul McLear <paul.mclear@plenitude.com>
+    to: Tom Willis <t.willis@clientco.com>, Sarah Ahmed <s.ahmed@clientco.com>
+    subject: "Compass update – week of 21 April"
+    snippet: >
+      Team, quick update for the week. The dashboard filtering enhancement completed UAT on Thursday
+      and is awaiting your sign-off for production deployment. The access issue fix was deployed to
+      production on Monday – dev team reports no errors in monitoring logs. Phase 2 scope is ready
+      for your review; document shared to the project SharePoint folder.
+
+  - date: "2026-04-18"
+    from: Tom Willis <t.willis@clientco.com>
+    to: Paul McLear <paul.mclear@plenitude.com>
+    subject: "RE: RAID log review"
+    snippet: >
+      Paul, the RAID log looks mostly OK but I'm worried the Phase 2 timeline risk is still rated
+      amber when in my view it should be red at this point. The steering committee is going to ask
+      questions and I want to make sure we're aligned before the meeting. Let's discuss.
+
+  - date: "2026-04-10"
+    from: Amira Osei <a.osei@plenitude.com>
+    to: Sarah Ahmed <s.ahmed@clientco.com>
+    subject: "Audit trail investigation – findings"
+    snippet: >
+      Sarah, following your query in February, I can confirm we identified a gap in the audit trail
+      for bulk import actions. A fix was included in the sprint 8 release deployed 4 April. All bulk
+      actions from that date are now fully captured. Historical records prior to 4 April will require
+      manual reconciliation if needed for audit purposes.
+
+DataBridge Migration:
+  - date: "2026-04-29"
+    from: Priya Nair <p.nair@meridian-analytics.com>
+    to: Yusuf Okafor <y.okafor@plenitude.com>
+    subject: "UAT sign-off – confirmed"
+    snippet: >
+      Yusuf, I'm pleased to confirm that UAT has passed. Business users completed all acceptance
+      scenarios with no blockers. We had one cosmetic issue with date formatting on the reconciliation
+      report but the team agreed it's a post-go-live polish item. Formally approving go-live for
+      Monday 5 May. Well done to the whole team – this has been a really smooth delivery.
+
+  - date: "2026-04-26"
+    from: Ben Cho <b.cho@meridian-analytics.com>
+    to: Elena Vasquez <e.vasquez@plenitude.com>
+    subject: "RE: Cutover runbook – final review"
+    snippet: >
+      Elena, runbook looks good. One small addition: we should include a manual check of the
+      reconciliation totals 30 minutes post-cutover before we stand down the on-call team.
+      Happy to add that myself if easier. Otherwise we're good to go.
+
+  - date: "2026-04-24"
+    from: Yusuf Okafor <y.okafor@plenitude.com>
+    to: Priya Nair <p.nair@meridian-analytics.com>
+    subject: "Go/no-go recommendation – DataBridge"
+    snippet: >
+      Priya, following the UAT completion, I'm recommending a go decision for the 5 May cutover.
+      All acceptance criteria met, migration validation error rate 0.003% against a 0.01% threshold.
+      Performance benchmarks green. Rollback window confirmed as 72 hours. Attached is the cutover
+      plan for your approval.
+
+  - date: "2026-04-15"
+    from: Priya Nair <p.nair@meridian-analytics.com>
+    to: Yusuf Okafor <y.okafor@plenitude.com>
+    subject: "Senior leadership demo – great feedback"
+    snippet: >
+      Yusuf, just wanted to pass on that the demo to our leadership team last week went really well.
+      The CFO asked specifically whether we could extend the same approach to the finance data
+      warehouse. I said that's a conversation for after go-live, but it's a good sign. Team morale
+      is high.
+
+Synergy CRM:
+  - date: "2026-04-29"
+    from: Marcus Reid <m.reid@hartwellandpartners.com>
+    to: Claire Nguyen <c.nguyen@plenitude.com>
+    subject: "Tomorrow's meeting – I need straight answers"
+    snippet: >
+      Claire, I want to be direct with you before tomorrow. My sales team has lost confidence in
+      the CRM and two senior account managers have told me they're going back to spreadsheets.
+      This is not acceptable. I need to understand: is this fixed, or isn't it? And I need a
+      realistic view of whether Phase 2 is still viable given everything that's happened. I'd
+      appreciate honesty over optimism tomorrow.
+
+  - date: "2026-04-27"
+    from: Linda Park <l.park@hartwellandpartners.com>
+    to: Raj Mehta <r.mehta@plenitude.com>
+    subject: "RE: Post-incident monitoring report"
+    snippet: >
+      Raj, monitoring looks stable since the fix on 2 April, which is reassuring. However, Linda
+      from the sales team tells me two users are still manually exporting data as a habit because
+      they don't trust the system. We'll need to do some confidence-rebuilding. Also – can you
+      confirm whether the rate-limiting issue could recur if message volumes increase? We're
+      expecting a 40% uplift in contacts next quarter following a campaign.
+
+  - date: "2026-04-22"
+    from: Claire Nguyen <c.nguyen@plenitude.com>
+    to: Marcus Reid <m.reid@hartwellandpartners.com>, Linda Park <l.park@hartwellandpartners.com>
+    subject: "Synergy CRM – stability update"
+    snippet: >
+      Marcus, Linda – three weeks post-fix, the system has been stable. Zero sync failures logged.
+      Data latency is consistently under 5 minutes. We've increased polling resilience and added
+      alerting thresholds so we'd catch rate-limit pressure early. I'd suggest we use tomorrow's
+      meeting to review the post-incident actions and agree on a recovery plan for team confidence.
+
+  - date: "2026-04-14"
+    from: Raj Mehta <r.mehta@plenitude.com>
+    to: Linda Park <l.park@hartwellandpartners.com>
+    subject: "Phase 2 – budget approval and timeline implications"
+    snippet: >
+      Linda, now that the immediate incident is resolved, I wanted to revisit Phase 2 scoping.
+      Has the board approved the budget? Given the incident, I suspect there may be appetite to
+      pause or reduce Phase 2 scope. Happy to put together a revised options paper if useful.
+      We should also factor in that the incident has consumed some contingency time on our side.
+
+  - date: "2026-04-05"
+    from: Marcus Reid <m.reid@hartwellandpartners.com>
+    to: Claire Nguyen <c.nguyen@plenitude.com>
+    subject: "RE: Emergency fix – post-deployment"
+    snippet: >
+      Claire, I can confirm the sales data is updating correctly this morning. The team is relieved.
+      However, I want a formal post-incident review completed and shared with me before we discuss
+      Phase 2. I also want clarity on how this will be prevented in future. We've taken reputational
+      damage internally and I want to understand what accountability looks like.
+
+Nexus Security Review:
+  - date: "2026-04-30"
+    from: Daniel Chen <d.chen@quantumfinancial.com>
+    to: Imogen Walsh <i.walsh@plenitude.com>
+    subject: "RE: Final report – executive summary feedback"
+    snippet: >
+      Imogen, the executive summary is excellent – clear, non-technical, and appropriately measured.
+      The board will appreciate the absence of alarmist language. I've shared it with our General
+      Counsel who had no concerns. We'd like to present this at the board meeting on 8 May if you're
+      available to attend. This has been one of the smoothest engagements we've run.
+
+  - date: "2026-04-28"
+    from: Rachel Torres <r.torres@quantumfinancial.com>
+    to: Stefan Brandt <s.brandt@plenitude.com>
+    subject: "Remediation plan – confirmed"
+    snippet: >
+      Stefan, I've reviewed the two low-severity remediation recommendations. Both are straightforward
+      config changes – I've assigned them to the infrastructure team with a 16 May deadline. The
+      informational finding doesn't require action but I've logged it in our risk register for
+      awareness. Thanks for the clarity in the write-ups; they made assigning ownership very easy.
+
+  - date: "2026-04-24"
+    from: Imogen Walsh <i.walsh@plenitude.com>
+    to: Daniel Chen <d.chen@quantumfinancial.com>, Rachel Torres <r.torres@quantumfinancial.com>
+    subject: "Final report – draft for review"
+    snippet: >
+      Daniel, Rachel – please find attached the draft final report for your review. Executive summary
+      on pages 1–3. Full technical findings from page 8. We've rated the overall security posture as
+      Strong, which I believe is well-supported by the evidence. Please come back with any comments
+      by 29 April and I'll issue the final version by 30 April as agreed.
+
+  - date: "2026-04-10"
+    from: Daniel Chen <d.chen@quantumfinancial.com>
+    to: Imogen Walsh <i.walsh@plenitude.com>
+    subject: "Midpoint check-in – very pleased so far"
+    snippet: >
+      Imogen, Rachel has kept me updated throughout and I just wanted to say directly that the
+      professionalism of your team has been excellent. The way Stefan's team handled access
+      requests without disrupting operations was noticed. Looking forward to the final findings.
+      I anticipate bringing Plenitude back for our annual review next year.

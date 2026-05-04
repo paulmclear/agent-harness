@@ -1,0 +1,148 @@
+Compass:
+  - date: "2026-02-15"
+    type: Quarterly Steering Committee
+    attendees:
+      - Sarah Ahmed – Head of Compliance, ClientCo
+      - Tom Willis – Programme Manager, ClientCo
+      - Paul McLear – Director, Plenitude
+      - Amira Osei – Business Analyst, Plenitude
+    key_points:
+      - Dashboard filtering enhancement agreed as Q1 priority; delivery target set for end of March.
+      - Access provisioning delays acknowledged; two business users still awaiting activation. Tom to chase IT.
+      - Phase 2 scope document to be reviewed and signed off by ClientCo by 28 February.
+      - Sarah raised concern about audit trail completeness for regulatory reporting. Plenitude to investigate.
+    action_items:
+      - "Tom Willis: Chase IT provisioning for outstanding users by 17 Feb"
+      - "Paul McLear: Share Phase 2 scope draft by 20 Feb"
+      - "Amira Osei: Investigate audit trail gap and report findings by 28 Feb"
+    decisions:
+      - Agreed to move from bi-weekly to monthly check-ins unless issues escalate.
+      - Dashboard enhancement scoped to include column-level filtering and date-range presets.
+
+  - date: "2025-11-20"
+    type: Mid-Programme Review
+    attendees:
+      - Sarah Ahmed – Head of Compliance, ClientCo
+      - Tom Willis – Programme Manager, ClientCo
+      - Paul McLear – Director, Plenitude
+    key_points:
+      - Phase 1 delivery rated green overall; minor slippage on data migration module recovered in sprint 4.
+      - Client expressed satisfaction with onboarding experience for power users.
+      - Early feedback suggests end-users want more customisable dashboard layouts.
+      - Licensing for Phase 2 extension modules to be confirmed by 15 December.
+    action_items:
+      - "ClientCo: Confirm Phase 2 licensing requirements by 15 Dec"
+      - "Plenitude: Prepare dashboard customisation options paper for January"
+    decisions:
+      - Phase 1 go-live confirmed for 10 January 2026.
+      - Agreed to run a 30-day hypercare period post-launch.
+
+DataBridge Migration:
+  - date: "2026-04-10"
+    type: Sprint 6 Review
+    attendees:
+      - Priya Nair – Head of Data Engineering, Meridian Analytics
+      - Ben Cho – Technical Lead, Meridian Analytics
+      - Yusuf Okafor – Delivery Manager, Plenitude
+      - Elena Vasquez – Data Architect, Plenitude
+    key_points:
+      - All sprint 6 user stories delivered; velocity tracking 15% ahead of plan.
+      - Historical data migration for 2018–2022 cohorts completed and validated. Error rate 0.003%.
+      - Reconciliation reports signed off by Priya. No discrepancies flagged.
+      - Performance benchmarks met for all target query profiles; p95 latency under 800 ms.
+    action_items:
+      - "Ben Cho: Prepare UAT environment access for business users by 14 Apr"
+      - "Elena Vasquez: Finalise migration runbook for production cutover"
+    decisions:
+      - UAT phase to run 14–25 April; go/no-go decision scheduled for 28 April.
+      - Agreed to maintain 72-hour rollback window post-cutover.
+
+  - date: "2026-03-05"
+    type: Mid-Sprint Checkpoint
+    attendees:
+      - Priya Nair – Head of Data Engineering, Meridian Analytics
+      - Yusuf Okafor – Delivery Manager, Plenitude
+    key_points:
+      - Sprint 5 on track; data mapping completed for final two source systems.
+      - Identified minor schema drift in legacy CRM export. Handled via transformation layer.
+      - Stakeholder demo scheduled for end of sprint; Priya to invite senior leadership.
+    action_items:
+      - "Priya Nair: Confirm attendees for end-of-sprint demo by 7 Mar"
+      - "Yusuf Okafor: Update project plan to reflect schema drift handling"
+    decisions:
+      - No scope changes; drift handled within existing contingency budget.
+
+Synergy CRM:
+  - date: "2026-03-28"
+    type: Emergency Issue Review
+    attendees:
+      - Marcus Reid – COO, Hartwell & Partners
+      - Linda Park – IT Director, Hartwell & Partners
+      - Claire Nguyen – Account Director, Plenitude
+      - Raj Mehta – Solutions Architect, Plenitude
+    key_points:
+      - Data sync failures causing CRM records to be 24–48 hours out of date for sales team.
+      - Root cause identified as rate-limiting conflict between CRM API and middleware polling interval.
+      - Sales Director reported lost deal attributed to stale contact data. Executive visibility raised.
+      - Interim workaround (manual export) agreed but described as unsustainable by Linda Park.
+    action_items:
+      - "Raj Mehta: Deploy polling interval fix to staging by 31 Mar; production by 2 Apr"
+      - "Claire Nguyen: Provide daily status updates to Marcus until issue resolved"
+      - "Hartwell & Partners: Confirm go-ahead for emergency change window"
+    decisions:
+      - Emergency change window approved for Saturday 1 April, 02:00–06:00.
+      - Plenitude to provide on-call cover for 48 hours post-fix.
+      - Formal post-incident review scheduled for 10 April.
+
+  - date: "2026-02-12"
+    type: Phase 2 Scoping Session
+    attendees:
+      - Linda Park – IT Director, Hartwell & Partners
+      - Claire Nguyen – Account Director, Plenitude
+      - Raj Mehta – Solutions Architect, Plenitude
+    key_points:
+      - Phase 2 requirements gathered: pipeline automation, role-based dashboards, and email integration.
+      - Linda flagged that budget for Phase 2 has not yet been approved by the board; decision expected April board meeting.
+      - Technical spike agreed to assess email integration complexity before formal scoping.
+    action_items:
+      - "Raj Mehta: Complete email integration spike and share findings by 28 Feb"
+      - "Linda Park: Confirm board budget decision timeline"
+    decisions:
+      - Phase 2 scoping put on hold pending budget approval.
+      - Email integration assessed as medium complexity; no blockers identified.
+
+Nexus Security Review:
+  - date: "2026-04-22"
+    type: Final Findings Walkthrough
+    attendees:
+      - Daniel Chen – CISO, Quantum Financial
+      - Rachel Torres – Security Operations Lead, Quantum Financial
+      - Imogen Walsh – Lead Consultant, Plenitude
+      - Stefan Brandt – Penetration Test Lead, Plenitude
+    key_points:
+      - All 14 in-scope systems reviewed; full penetration test completed across external and internal attack surfaces.
+      - Three findings identified: two low severity, one informational. Zero critical or high findings.
+      - Daniel confirmed this is the cleanest external audit result the organisation has received in five years.
+      - Remediation plan agreed for the two low-severity findings; no immediate action required for informational item.
+    action_items:
+      - "Rachel Torres: Implement low-severity finding remediations by 16 May"
+      - "Imogen Walsh: Issue final report and executive summary by 30 Apr"
+    decisions:
+      - Final report to be shared with board audit committee by 6 May.
+      - Plenitude to be invited to present findings at board meeting if requested.
+
+  - date: "2026-03-18"
+    type: Midpoint Review
+    attendees:
+      - Rachel Torres – Security Operations Lead, Quantum Financial
+      - Imogen Walsh – Lead Consultant, Plenitude
+      - Stefan Brandt – Penetration Test Lead, Plenitude
+    key_points:
+      - Seven of fourteen systems reviewed; no critical findings to date.
+      - Internal network segmentation assessed as strong; no lateral movement paths identified.
+      - External perimeter testing complete; all results within acceptable thresholds.
+    action_items:
+      - "Stefan Brandt: Begin internal application layer testing week of 22 Mar"
+      - "Rachel Torres: Provide access credentials for remaining five systems"
+    decisions:
+      - On track to complete all testing by 18 April.
