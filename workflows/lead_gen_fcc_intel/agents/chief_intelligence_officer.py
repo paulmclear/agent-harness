@@ -122,7 +122,7 @@ Notes:
 agent = create_agent(
     name="ChiefIntelligenceOfficerAgent",
     system_prompt=SYSTEM_PROMPT,
-    model="openai:gpt-5.4",
+    model="openai:gpt-5.4-pro",
 )
 
 

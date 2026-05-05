@@ -6,7 +6,7 @@ from langchain_core.messages import HumanMessage
 
 from workflows.lead_gen_fcc_intel.state import AgentState
 
-DEFAULT_MODEL = "openai:gpt-5.4-mini"
+DEFAULT_MODEL = "openai:gpt-5.4"
 
 
 def make_analyst_node(

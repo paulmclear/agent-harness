@@ -5,6 +5,10 @@ from typing import Any
 
 from dotenv import load_dotenv
 from hubspot import HubSpot
+from hubspot.crm.companies import (
+    ApiException as CompaniesApiException,
+    SimplePublicObjectInput,
+)
 from hubspot.crm.contacts import PublicObjectSearchRequest, ApiException
 
 load_dotenv()
@@ -68,3 +72,46 @@ class HubSpotService:
             }
             for contact in response.results
         ]
+
+    def get_company(
+        self,
+        company_id: str,
+        properties: list[str] | None = None,
+    ) -> dict[str, Any]:
+        """Fetch a HubSpot Company record by id."""
+        try:
+            company = self.client.crm.companies.basic_api.get_by_id(
+                company_id=company_id,
+                properties=properties,
+            )
+        except CompaniesApiException as exc:
+            raise RuntimeError(f"HubSpot company fetch failed: {exc}") from exc
+
+        return {
+            "id": company.id,
+            "properties": company.properties,
+            "created_at": str(company.created_at),
+            "updated_at": str(company.updated_at),
+        }
+
+    def update_company(
+        self,
+        company_id: str,
+        properties: dict[str, Any],
+    ) -> dict[str, Any]:
+        """Update properties on a HubSpot Company record."""
+        try:
+            company = self.client.crm.companies.basic_api.update(
+                company_id=company_id,
+                simple_public_object_input=SimplePublicObjectInput(
+                    properties=properties
+                ),
+            )
+        except CompaniesApiException as exc:
+            raise RuntimeError(f"HubSpot company update failed: {exc}") from exc
+
+        return {
+            "id": company.id,
+            "properties": company.properties,
+            "updated_at": str(company.updated_at),
+        }

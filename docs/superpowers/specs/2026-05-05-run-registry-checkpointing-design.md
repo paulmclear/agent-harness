@@ -19,6 +19,7 @@ LangGraph workflows in this repo run long chains of expensive LLM calls (13+ per
 3. Run lifecycle tracking — status, inputs, outputs, and error recorded per run
 4. General-purpose — not coupled to any single workflow
 5. CLI resumption — `--resume <run-id>` replays a failed run without re-spending completed nodes
+6. User documentation — README covering setup, CLI usage, resume flow, and how to wire a new workflow into the harness
 
 ---
 

@@ -3,7 +3,10 @@
     "allow": [
       "Bash(file:*)",
       "Bash(uv run python -c ' *)",
-      "Bash(uv run *)"
+      "Bash(uv run *)",
+      "Bash(uv pip *)",
+      "Bash(uv sync *)",
+      "Bash(uv add *)"
     ]
   }
 }

@@ -1,4 +1,6 @@
-from typing import TypedDict
+from typing import Annotated, TypedDict
+
+from langgraph.graph import add_messages
 
 
 class AgentState(TypedDict, total=False):
@@ -13,4 +15,5 @@ class AgentState(TypedDict, total=False):
     formatted_report_path: str
 
     # per-run output directory (e.g. output/2026-05-04_19-55-32)
-    output_dir: str
+    # Annotated with identity reducer to allow pass-through in concurrent nodes
+    output_dir: Annotated[str, lambda x, y: x or y]
