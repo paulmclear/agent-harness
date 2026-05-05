@@ -6,6 +6,7 @@ import uuid
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Any
 
 PENDING = "PENDING"
 RUNNING = "RUNNING"
@@ -43,8 +44,8 @@ class Run:
     started_at: str | None
     completed_at: str | None
     attempt: int
-    inputs: dict
-    outputs: dict | None
+    inputs: dict[str, Any]
+    outputs: dict[str, Any] | None
     error: str | None
 
 
@@ -101,21 +102,17 @@ class RunRegistry:
     def mark_running(self, run_id: str) -> None:
         now = _now()
         with self._connect() as conn:
-            row = conn.execute(
-                "SELECT started_at FROM runs WHERE run_id = ?", (run_id,)
-            ).fetchone()
-            is_resume = row is not None and row["started_at"] is not None
-            if is_resume:
-                conn.execute(
-                    "UPDATE runs SET status=?, started_at=?, attempt=attempt+1, error=NULL "
-                    "WHERE run_id=?",
-                    (RUNNING, now, run_id),
-                )
-            else:
-                conn.execute(
-                    "UPDATE runs SET status=?, started_at=? WHERE run_id=?",
-                    (RUNNING, now, run_id),
-                )
+            conn.execute(
+                """
+                UPDATE runs
+                SET status     = ?,
+                    started_at = CASE WHEN started_at IS NULL THEN ? ELSE started_at END,
+                    attempt    = CASE WHEN started_at IS NOT NULL THEN attempt + 1 ELSE attempt END,
+                    error      = CASE WHEN started_at IS NOT NULL THEN NULL ELSE error END
+                WHERE run_id = ?
+                """,
+                (RUNNING, now, run_id),
+            )
 
     def complete_run(self, run_id: str, outputs: dict) -> None:
         with self._connect() as conn:
@@ -127,7 +124,7 @@ class RunRegistry:
     def fail_run(self, run_id: str, error: str) -> None:
         with self._connect() as conn:
             conn.execute(
-                "UPDATE runs SET status=?, completed_at=?, error=? WHERE run_id=?",
+                "UPDATE runs SET status=?, completed_at=?, error=?, outputs_json=NULL WHERE run_id=?",
                 (FAILED, _now(), error, run_id),
             )
 
@@ -150,12 +147,12 @@ class RunRegistry:
             "SELECT run_id, workflow, subject, status, created_at, started_at, "
             "completed_at, attempt, inputs_json, outputs_json, error FROM runs"
         )
-        params: list = []
+        params: list[str] = []
         clauses: list[str] = []
-        if workflow:
+        if workflow is not None:
             clauses.append("workflow = ?")
             params.append(workflow)
-        if status:
+        if status is not None:
             clauses.append("status = ?")
             params.append(status)
         if clauses:

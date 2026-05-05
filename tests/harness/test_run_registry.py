@@ -97,7 +97,9 @@ def test_list_runs_filters_by_status(registry):
 
 
 def test_list_runs_ordered_newest_first(registry):
+    import time
     registry.create_run("wf", "s1", {})
+    time.sleep(0.01)
     registry.create_run("wf", "s2", {})
     runs = registry.list_runs()
-    assert runs[0].created_at >= runs[1].created_at
+    assert runs[0].created_at > runs[1].created_at
