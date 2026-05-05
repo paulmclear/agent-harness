@@ -109,9 +109,9 @@ run_workflow(registry, graph, run.run_id, inputs)
 ```python
 from harness.checkpoint import make_async_saver
 
-saver = make_async_saver(db_path)
-graph = build_graph(checkpointer=saver)
-# use graph.ainvoke(...) instead of graph.invoke(...)
+async with make_async_saver(db_path) as saver:
+    graph = build_graph(checkpointer=saver)
+    # use graph.ainvoke(...) instead of graph.invoke(...)
 ```
 
 ## Run status reference
