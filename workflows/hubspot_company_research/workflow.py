@@ -217,35 +217,68 @@ def build_graph(checkpointer=None):
 
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run the HubSpot Company Research workflow")
-    parser.add_argument("company_id", help="HubSpot Company record ID to research")
+    parser.add_argument("company_id", nargs="?", help="HubSpot company ID (fresh run)")
+    parser.add_argument("--resume", metavar="RUN_ID", help="Resume a FAILED or RUNNING run by ID")
+    parser.add_argument("--list-runs", action="store_true", help="List recent runs for this workflow")
+    parser.add_argument("--status", help="Filter --list-runs by status: PENDING, RUNNING, COMPLETED, FAILED")
     parser.add_argument(
         "--property-value",
         default="Requested",
         help="Simulated value of intelligence_report_status (default: 'Requested')",
     )
-    parser.add_argument(
-        "--skip-hubspot-write",
-        action="store_true",
-        help="Bypass writing the report back to HubSpot (compiled graph still runs the node, so this is currently informational only).",
-    )
     return parser.parse_args()
 
 
 if __name__ == "__main__":
+    from harness.checkpoint import make_sync_saver
+    from harness.run_registry import FAILED, RUNNING, RunRegistry
+
     args = _parse_args()
+
+    db_path = Path(os.getenv("RUNS_DB_PATH", "output/runs.db"))
+    db_path.parent.mkdir(parents=True, exist_ok=True)
+    registry = RunRegistry(db_path)
+
+    if args.list_runs:
+        runs = registry.list_runs(workflow=WORKFLOW_NAME, status=args.status or None)
+        _print_runs(runs)
+        sys.exit(0)
+
+    if args.resume:
+        run = registry.get_run(args.resume)
+        if not run:
+            print(f"Run not found: {args.resume}", file=sys.stderr)
+            sys.exit(1)
+        if run.status not in {FAILED, RUNNING}:
+            print(
+                f"Cannot resume: status is '{run.status}'. Only FAILED or RUNNING runs are resumable.",
+                file=sys.stderr,
+            )
+            sys.exit(1)
+        saver = make_sync_saver(db_path)
+        graph = build_graph(checkpointer=saver)
+        final_state = run_workflow(registry, graph, args.resume, run.inputs)
+        print(f"Run {args.resume} completed.")
+        print(f"HubSpot update status: {final_state.get('hubspot_update_status') or 'skipped'}")
+        sys.exit(0)
+
+    if not args.company_id:
+        print(
+            "Error: provide a company_id for a fresh run, --resume RUN_ID, or --list-runs.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
 
     run_dir = Path("output") / dt.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     run_dir.mkdir(parents=True, exist_ok=True)
-
-    graph = build_graph()
-    final_state = graph.invoke(
-        {
-            "company_id": args.company_id,
-            "property_value": args.property_value,
-            "output_dir": str(run_dir),
-        }
-    )
-
-    status = final_state.get("hubspot_update_status") or "skipped"
-    print(f"Run output written to: {run_dir}")
-    print(f"HubSpot update status: {status}")
+    inputs = {
+        "company_id": args.company_id,
+        "property_value": args.property_value,
+        "output_dir": str(run_dir),
+    }
+    run = registry.create_run(WORKFLOW_NAME, args.company_id, inputs)
+    saver = make_sync_saver(db_path)
+    graph = build_graph(checkpointer=saver)
+    final_state = run_workflow(registry, graph, run.run_id, inputs)
+    print(f"Run {run.run_id} complete. Output written to: {run_dir}")
+    print(f"HubSpot update status: {final_state.get('hubspot_update_status') or 'skipped'}")
