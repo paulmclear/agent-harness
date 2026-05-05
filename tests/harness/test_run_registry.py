@@ -4,7 +4,7 @@ from harness.run_registry import COMPLETED, FAILED, PENDING, RUNNING, Run, RunRe
 
 @pytest.fixture
 def registry(tmp_path):
-    return RunRegistry(tmp_path / "test.db")
+    return RunRegistry(f"sqlite:///{tmp_path}/test.db")
 
 
 def test_create_run_returns_pending_run(registry):

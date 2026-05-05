@@ -237,7 +237,8 @@ if __name__ == "__main__":
 
     db_path = Path(os.getenv("RUNS_DB_PATH", "output/runs.db"))
     db_path.parent.mkdir(parents=True, exist_ok=True)
-    registry = RunRegistry(db_path)
+    db_url = os.getenv("RUNS_DB_URL", f"sqlite:///{db_path}")
+    registry = RunRegistry(db_url)
 
     if args.list_runs:
         runs = registry.list_runs(workflow=WORKFLOW_NAME, status=args.status or None)

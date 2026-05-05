@@ -4,10 +4,8 @@ General-purpose utilities for LangGraph workflow persistence and fault tolerance
 
 ## What it provides
 
-- **`RunRegistry`** — tracks every workflow run (status, inputs, outputs, error) in a SQLite `runs` table
-- **`make_sync_saver`** / **`make_async_saver`** — LangGraph checkpointer factories that write to the same SQLite file, enabling automatic state snapshots after every graph node
-
-Both components write to the same SQLite file but to independent table namespaces — they never interfere.
+- **`RunRegistry`** — tracks every workflow run (status, inputs, outputs, error) in a `runs` table via SQLAlchemy ORM. Works with SQLite (dev), PostgreSQL, or MySQL (prod) — just change the connection URL.
+- **`make_sync_saver`** / **`make_async_saver`** — LangGraph checkpointer factories backed by SQLite, enabling automatic state snapshots after every graph node.
 
 ## Setup
 
@@ -17,11 +15,20 @@ Install the LangGraph SQLite checkpointer (already in `pyproject.toml`):
 uv sync
 ```
 
-The default DB file is `output/runs.db`. Override with the `RUNS_DB_PATH` env var:
+`RunRegistry` takes a SQLAlchemy connection URL. Set `RUNS_DB_URL` for any backend, or `RUNS_DB_PATH` to point to a different SQLite file (the URL is auto-constructed):
 
 ```bash
-export RUNS_DB_PATH=/path/to/your/runs.db
+# SQLite (default — dev/local)
+export RUNS_DB_PATH=output/runs.db          # defaults to this if neither var is set
+
+# PostgreSQL (prod)
+export RUNS_DB_URL=postgresql+psycopg2://user:pass@host:5432/mydb
+
+# MySQL (prod)
+export RUNS_DB_URL=mysql+pymysql://user:pass@host:3306/mydb
 ```
+
+Note: `RUNS_DB_URL` takes precedence over `RUNS_DB_PATH`. The LangGraph checkpointer always uses the SQLite file at `RUNS_DB_PATH` regardless of which backend `RunRegistry` uses.
 
 ## CLI — hubspot_company_research
 
@@ -95,9 +102,10 @@ from harness.checkpoint import make_sync_saver
 
 db_path = Path(os.getenv("RUNS_DB_PATH", "output/runs.db"))
 db_path.parent.mkdir(parents=True, exist_ok=True)
+db_url = os.getenv("RUNS_DB_URL", f"sqlite:///{db_path}")
 
-registry = RunRegistry(db_path)
-saver = make_sync_saver(db_path)
+registry = RunRegistry(db_url)
+saver = make_sync_saver(db_path)  # checkpointer always uses SQLite
 graph = build_graph(checkpointer=saver)
 
 run = registry.create_run("my_workflow", subject_id, inputs)
