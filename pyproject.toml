@@ -11,6 +11,7 @@ dependencies = [
     "langchain>=1.2.13",
     "langchain-openai>=1.1.12",
     "langchain-perplexity>=1.2.0",
+    "langgraph-checkpoint-sqlite>=2.0.0",
     "python-docx>=1.2.0",
     "python-dotenv>=1.2.2",
     "pyyaml>=6.0.3",
@@ -19,5 +20,6 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "pytest>=8.0.0",
     "ruff>=0.15.12",
 ]
