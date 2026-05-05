@@ -255,6 +255,7 @@ if __name__ == "__main__":
                 file=sys.stderr,
             )
             sys.exit(1)
+        Path(run.inputs.get("output_dir", "output/resumed")).mkdir(parents=True, exist_ok=True)
         saver = make_sync_saver(db_path)
         graph = build_graph(checkpointer=saver)
         final_state = run_workflow(registry, graph, args.resume, run.inputs)
