@@ -23,6 +23,9 @@ transcripts/
 # Workflow run outputs (per-run subfolders under output/)
 output/
 
+# other data
+data/
+
 # macOS
 .DS_Store
 
