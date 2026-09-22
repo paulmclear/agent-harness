@@ -1,0 +1,34 @@
+- customer_id: C-10482
+  name: Acme Imports Ltd
+  country: GB
+  industry: Wholesale
+  annual_turnover: 4200000
+  years_in_business: 7
+
+- customer_id: C-20017
+  name: Brightwater Consulting
+  country: IE
+  industry: Professional Services
+  annual_turnover: 850000
+  years_in_business: 12
+
+- customer_id: C-30355
+  name: Lagos Trade Partners
+  country: NG
+  industry: Wholesale
+  annual_turnover: 2750000
+  years_in_business: 2
+
+- customer_id: C-40921
+  name: Northwind Bakery
+  country: GB
+  industry: Food & Beverage
+  annual_turnover: 320000
+  years_in_business: 1
+
+- customer_id: C-51108
+  name: Karachi Textiles Co
+  country: PK
+  industry: Manufacturing
+  annual_turnover: 6100000
+  years_in_business: 15

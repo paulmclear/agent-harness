@@ -1,0 +1,36 @@
+- id: POL-12
+  title: Wholesale businesses
+  text: >-
+    Wholesale businesses should normally be considered medium risk. Where annual
+    turnover exceeds 1,000,000 the account must be reviewed by a senior analyst
+    before onboarding.
+
+- id: POL-14
+  title: High-risk jurisdictions
+  text: >-
+    Customers located in a jurisdiction on the high-risk country list require
+    enhanced due diligence, including verification of beneficial ownership.
+
+- id: POL-18
+  title: Newly established businesses
+  text: >-
+    Businesses trading for fewer than three years lack a track record. Request
+    two years of management accounts and a director's personal guarantee.
+
+- id: POL-21
+  title: Professional services
+  text: >-
+    Professional services firms are generally low risk. Standard onboarding
+    checks apply unless turnover or jurisdiction triggers another policy.
+
+- id: POL-27
+  title: Manufacturing and supply chain
+  text: >-
+    Manufacturing customers with overseas suppliers should be screened for
+    sanctions exposure across their supply chain.
+
+- id: POL-33
+  title: Risk rating thresholds
+  text: >-
+    A total risk score of 0 or 1 is low, 2 or 3 is medium, and 4 or more is high.
+    High-rated customers require sign-off from the compliance lead.
