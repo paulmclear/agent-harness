@@ -1,0 +1,222 @@
+articles:
+  - article_id: kb-vpn-001
+    title: Connect to the corporate VPN
+    summary: Steps for establishing a secure remote connection to company resources.
+    content: Install the approved VPN client, enter your company credentials, complete multifactor authentication, and select the recommended regional gateway. Confirm that the client shows Connected before accessing internal services. Disconnect when finished.
+    tags: [vpn, remote-access, security]
+  - article_id: kb-vpn-002
+    title: VPN connection fails
+    summary: Troubleshooting steps for a VPN that will not connect.
+    content: Verify your internet connection, confirm the VPN client is current, and check that your device date and time are correct. Restart the client and try another approved gateway. If the issue continues, record the error message and contact IT support.
+    tags: [vpn, troubleshooting]
+  - article_id: kb-vpn-003
+    title: VPN disconnects frequently
+    summary: Ways to improve an unstable VPN session.
+    content: Use a reliable network, move closer to the wireless access point, and disable conflicting VPN or proxy software. Update the VPN client and restart your router if appropriate. Report the time, location, network type, and client logs to IT.
+    tags: [vpn, connectivity, troubleshooting]
+  - article_id: kb-vpn-004
+    title: VPN access for contractors
+    summary: Requirements for approved contractor VPN access.
+    content: Contractor access requires a sponsoring manager, an active identity account, device compliance, and multifactor authentication. Request access through the service portal before installing the approved client. Access expires according to the engagement end date.
+    tags: [vpn, contractors, access]
+  - article_id: kb-vpn-005
+    title: VPN split tunneling guidance
+    summary: When and how split tunneling is permitted.
+    content: Use only the configuration provided by IT. Do not bypass the corporate tunnel to access restricted services or sensitive data. If performance is poor, contact IT rather than changing routing settings manually.
+    tags: [vpn, security, policy]
+  - article_id: kb-vpn-006
+    title: VPN multifactor authentication prompts
+    summary: Handling repeated or unexpected VPN authentication prompts.
+    content: Approve a prompt only when you initiated the VPN sign-in. Reject unexpected prompts, change your password if necessary, and report suspicious activity. Ensure the authenticator app has network access and correct time settings.
+    tags: [vpn, mfa, security]
+
+  - article_id: kb-email-001
+    title: Set up company email
+    summary: Configure company email on an approved computer or mobile device.
+    content: Use the approved mail application and sign in with your company identity. Complete multifactor authentication and allow device management when required. Do not configure company mail in unapproved applications or forward it to personal accounts.
+    tags: [email, setup, security]
+  - article_id: kb-email-002
+    title: Recover a missing email
+    summary: Find messages that appear to be missing.
+    content: Search all folders, including Archive, Junk, Deleted Items, and shared mailboxes. Check search filters and conversation grouping. If the message was deleted recently, restore it from Deleted Items; otherwise provide the sender, subject, and approximate date to IT.
+    tags: [email, troubleshooting]
+  - article_id: kb-email-003
+    title: Report phishing email
+    summary: Safely report suspicious messages.
+    content: Do not click links, open attachments, or reply. Use the approved Report Phishing action, then delete the message. If you entered credentials or opened an attachment, disconnect from the network if instructed and contact IT security immediately.
+    tags: [email, phishing, security]
+  - article_id: kb-email-004
+    title: Email delivery delays
+    summary: Troubleshoot delayed incoming or outgoing mail.
+    content: Check the recipient address, mailbox quota, and service status. Review bounce messages and retry once. Large attachments, external filtering, and recipient server policies can cause delays; provide the full error and message headers to IT.
+    tags: [email, delivery, troubleshooting]
+  - article_id: kb-email-005
+    title: Shared mailbox access
+    summary: Request and use access to a shared mailbox.
+    content: Obtain manager approval and submit a shared mailbox request. After access is granted, restart the mail application and add the mailbox using the approved account settings. Send only from the shared address when authorized.
+    tags: [email, shared-mailbox, access]
+  - article_id: kb-email-006
+    title: Email signature standards
+    summary: Apply the standard company email signature.
+    content: Use the approved template containing your name, role, department, phone number, and company details. Avoid personal quotes, unapproved graphics, and sensitive information. Configure signatures separately for new messages and replies if supported.
+    tags: [email, standards]
+  - article_id: kb-email-007
+    title: Email storage and archiving
+    summary: Manage mailbox storage without losing business records.
+    content: Delete unnecessary messages, empty Deleted Items, and save approved records in the designated repository. Do not use personal storage for company mail. Contact Records or IT for retention requirements and archive failures.
+    tags: [email, storage, compliance]
+
+  - article_id: kb-hardware-001
+    title: Request a new computer
+    summary: Process for requesting standard computer equipment.
+    content: Submit a hardware request with your role, required applications, location, and manager approval. IT will select a supported model based on the standard catalog and business need. Do not purchase equipment for reimbursement without prior approval.
+    tags: [hardware, procurement]
+  - article_id: kb-hardware-002
+    title: Laptop will not power on
+    summary: Basic checks for an unresponsive laptop.
+    content: Connect the approved charger, verify the outlet, and wait several minutes. Disconnect peripherals and hold the power button as directed by the manufacturer. If there are no lights or sounds, provide the asset number and charger status to IT.
+    tags: [hardware, laptop, troubleshooting]
+  - article_id: kb-hardware-003
+    title: External monitor setup
+    summary: Connect and configure an approved external display.
+    content: Connect the monitor using the supported cable or dock, select the correct input, and open display settings to choose duplicate or extended mode. Install only approved drivers. If the display flickers, test another cable or port and contact IT.
+    tags: [hardware, monitor, peripherals]
+  - article_id: kb-hardware-004
+    title: Keyboard or mouse not working
+    summary: Restore operation of common input devices.
+    content: Check batteries, cables, wireless receivers, and USB ports. Reconnect the device and restart the computer. Test an approved replacement device; do not install unknown drivers or connect untrusted USB devices.
+    tags: [hardware, peripherals, troubleshooting]
+  - article_id: kb-hardware-005
+    title: Laptop battery care
+    summary: Practices that extend battery life and safety.
+    content: Use the approved charger, keep vents clear, and avoid extreme heat. Charge the battery before travel and use the operating system battery settings to identify high usage. Stop using a swollen, hot, or damaged battery and contact IT.
+    tags: [hardware, laptop, safety]
+  - article_id: kb-hardware-006
+    title: Printer troubleshooting
+    summary: Resolve common printing problems.
+    content: Confirm the correct printer is selected, it has paper and supplies, and it is online. Clear your print queue and retry a small test document. Do not open or repair shared printers; report repeated jams or hardware faults to facilities or IT.
+    tags: [hardware, printer, troubleshooting]
+
+  - article_id: kb-software-001
+    title: Request software installation
+    summary: Obtain approved software through the standard process.
+    content: Search the company software catalog first. Submit a request with the business justification, license needs, and manager approval when required. IT will verify security, licensing, and compatibility before installation.
+    tags: [software, installation, licensing]
+  - article_id: kb-software-002
+    title: Software update policy
+    summary: Keep applications current and secure.
+    content: Install updates from approved management tools or the vendor application. Restart when prompted and do not disable security updates. Report failures with the application name, version, device, and error message.
+    tags: [software, updates, security]
+  - article_id: kb-software-003
+    title: Application crashes
+    summary: Collect useful information when an application stops working.
+    content: Save work, reopen the application, and restart the device if needed. Check for approved updates and verify that the issue affects only one file or all files. Record the steps, time, error text, and recent changes before contacting IT.
+    tags: [software, troubleshooting]
+  - article_id: kb-software-004
+    title: Browser troubleshooting
+    summary: Resolve common web browser issues.
+    content: Confirm the site address, test another approved browser, and clear cached data for the affected site. Disable unapproved extensions and check for browser updates. Never install extensions or certificates from unknown sources.
+    tags: [software, browser, troubleshooting]
+  - article_id: kb-software-005
+    title: Software licensing compliance
+    summary: Use software in accordance with company licenses.
+    content: Install software only from approved sources and use it for authorized business purposes. Do not share license keys, copy licensed media, or use personal subscriptions for company data. Ask IT or Procurement about licensing questions.
+    tags: [software, licensing, compliance]
+  - article_id: kb-software-006
+    title: Remove unauthorized software
+    summary: Report and remove applications that are not approved.
+    content: Do not attempt to evade endpoint controls. Submit the application name and business need to IT, who will assess it and remove or approve it. Preserve business data before removal when instructed.
+    tags: [software, security, compliance]
+
+  - article_id: kb-identity-001
+    title: Reset a forgotten password
+    summary: Use the approved self-service process to reset your password.
+    content: Open the identity self-service portal, verify your identity with registered methods, and create a unique password that meets policy. Update saved credentials in approved applications. Contact the service desk if self-service verification fails.
+    tags: [identity, password, access]
+  - article_id: kb-identity-002
+    title: Enroll in multifactor authentication
+    summary: Register an authenticator for secure sign-in.
+    content: Start enrollment from the company identity portal, install the approved authenticator, and scan the displayed setup code. Complete a test verification and register a backup method if policy permits. Never share verification codes.
+    tags: [identity, mfa, security]
+  - article_id: kb-identity-003
+    title: Locked account
+    summary: Restore access after too many failed sign-in attempts.
+    content: Stop repeated attempts and wait for the documented lockout period or use the self-service unlock option. Check keyboard layout and saved passwords. If you did not cause the attempts, report possible credential misuse to IT security.
+    tags: [identity, account, troubleshooting]
+  - article_id: kb-identity-004
+    title: Request application access
+    summary: Obtain access to a business application.
+    content: Submit the application name, required role, business justification, and manager approval through the access request portal. Access is granted according to least-privilege policy and may require data-owner approval.
+    tags: [identity, access, applications]
+  - article_id: kb-identity-005
+    title: Joiner, mover, and leaver process
+    summary: Ensure timely identity changes when employment status changes.
+    content: Managers must submit onboarding, role-change, and departure requests promptly. IT provisions or removes access based on approved records. Do not transfer accounts or retain access after a role or engagement ends.
+    tags: [identity, lifecycle, compliance]
+  - article_id: kb-identity-006
+    title: Suspicious sign-in notification
+    summary: Respond to an unexpected identity security alert.
+    content: Do not approve an unexpected sign-in or MFA request. Change your password through the official portal, review active sessions, and notify IT security. Include the alert time, location, and device information without forwarding sensitive tokens.
+    tags: [identity, security, mfa]
+
+  - article_id: kb-network-001
+    title: Connect to corporate Wi-Fi
+    summary: Join the approved wireless network securely.
+    content: Select the corporate SSID and sign in with your company identity when prompted. Do not use open or lookalike networks for sensitive work. Forget networks that repeatedly trigger certificate warnings and contact IT.
+    tags: [network, wifi, security]
+  - article_id: kb-network-002
+    title: Wired network troubleshooting
+    summary: Restore a wired network connection.
+    content: Check that the cable is firmly connected and the network adapter is enabled. Try an approved port or cable and restart the device. Report the room, port, device asset number, and any status lights to IT.
+    tags: [network, ethernet, troubleshooting]
+  - article_id: kb-network-003
+    title: Slow network performance
+    summary: Diagnose unexpectedly slow network access.
+    content: Test whether the issue affects one site, one device, or multiple users. Pause large transfers, move closer to the access point, and restart approved equipment if allowed. Record speed tests, time, location, and connection type for IT.
+    tags: [network, performance, troubleshooting]
+  - article_id: kb-network-004
+    title: DNS and website access errors
+    summary: Troubleshoot failures resolving internal or external sites.
+    content: Verify the URL and test another approved site. Reconnect to the network and restart the browser. Do not manually change corporate DNS settings; provide the failing hostname and exact error to IT.
+    tags: [network, dns, troubleshooting]
+  - article_id: kb-network-005
+    title: Network outage reporting
+    summary: Provide the information needed to investigate an outage.
+    content: Check the service status page and ask nearby users whether they are affected. Report the location, wired or wireless connection, affected services, start time, and any error messages. Avoid repeatedly rebooting network equipment.
+    tags: [network, outage, support]
+  - article_id: kb-network-006
+    title: Guest network access
+    summary: Provide temporary internet access to visitors.
+    content: Use the designated guest network and follow the guest registration process. Never share the corporate Wi-Fi password with visitors. Guest devices must not access internal systems unless separately approved.
+    tags: [network, guest, security]
+
+  - article_id: kb-other-001
+    title: Contact the IT service desk
+    summary: Choose the correct channel for technical support.
+    content: Use the service portal for standard requests and incidents, or call the service desk for urgent access or outage issues. Include your contact details, device asset number, impact, urgency, steps taken, and exact error text.
+    tags: [other, support, service-desk]
+  - article_id: kb-other-002
+    title: Report a lost or stolen device
+    summary: Protect company information after a device is lost.
+    content: Report the incident immediately to the service desk and security team, including your location and last known time. Do not attempt to recover the device yourself. IT may lock, locate, or wipe the device remotely.
+    tags: [other, security, incident]
+  - article_id: kb-other-003
+    title: Backup and restore files
+    summary: Use approved storage and recovery options for business files.
+    content: Save business files in the approved managed storage location so they are backed up. Check version history or the recycle bin before requesting a restore. Provide the file path, name, and approximate deletion or change time to IT.
+    tags: [other, backup, data]
+  - article_id: kb-other-004
+    title: Secure remote work practices
+    summary: Protect company information while working away from the office.
+    content: Use approved devices, VPN, and storage. Keep screens private, lock your device when unattended, and avoid sensitive work on public computers or unsecured networks. Report suspected exposure or loss immediately.
+    tags: [other, remote-work, security]
+  - article_id: kb-other-005
+    title: Security incident reporting
+    summary: Report suspected compromise or data exposure quickly.
+    content: Contact IT security immediately for malware, accidental disclosure, suspicious activity, or unauthorized access. Preserve relevant messages and do not investigate beyond safe instructions. Include what happened, when it happened, and which systems or data may be affected.
+    tags: [other, security, incident]
+  - article_id: kb-other-006
+    title: IT service request priorities
+    summary: Understand how support requests are prioritized.
+    content: Critical outages, security incidents, and widespread business impact receive the highest priority. Individual access issues and standard requests are handled according to impact and queue order. Describe business impact accurately; do not mark an issue urgent without justification.
+    tags: [other, support, process]

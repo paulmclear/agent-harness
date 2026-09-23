@@ -29,3 +29,5 @@ output/
 # IDE
 .idea/
 .vscode/
+
+var/

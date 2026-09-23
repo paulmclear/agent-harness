@@ -1,0 +1,56 @@
+import logging
+from collections.abc import Callable, Mapping
+from typing import Any
+
+from typesafe_sdk import TypeSafeClient
+
+from __PACKAGE__.state import State
+
+logger = logging.getLogger(__name__)
+
+
+def make_qa_node(
+    *,
+    build_judge_state: Callable[[State], dict],
+    questions: Mapping[str, Any],
+    output_state_key: str,
+) -> Callable[[State], dict]:
+    """Build a node that checks agent output with TypeSafe ``system_one`` judgments.
+
+    All ``questions`` are answered in one batched call over the dict returned by
+    ``build_judge_state``. The typed answers land in ``state[output_state_key]``
+    so code (a conditional edge, a retry) owns the policy, not the model.
+    Skipped in debug mode.
+
+    Example::
+
+        from typesafe_sdk import Choice, Noul
+
+        qa_node = make_qa_node(
+            build_judge_state=lambda s: {"brief": s["example_agent_output"]},
+            questions={
+                "on_topic": Noul(
+                    instructions="Is the brief about the requested topic?",
+                    criteria={"true": "It is on topic.", "false": "It drifts off topic."},
+                ),
+                "tone": Choice(
+                    instructions="What is the brief's tone?",
+                    criteria={"neutral": None, "promotional": None, "unclear": None},
+                ),
+            },
+            output_state_key="qa_output",
+        )
+    """
+
+    def node(state: State) -> dict:
+        if state.get("debug"):
+            logger.info("QA skipped in debug mode: %s", ", ".join(questions))
+            return {output_state_key: {}}
+
+        with TypeSafeClient() as client:
+            response = client.system_one(
+                state=build_judge_state(state), questions=dict(questions)
+            )
+        return {output_state_key: dict(response)}
+
+    return node

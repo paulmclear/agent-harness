@@ -8,5 +8,6 @@
       "Bash(uv sync *)",
       "Bash(uv add *)"
     ]
-  }
+  },
+  "outputStyle": "attention-span:Rundown"
 }
