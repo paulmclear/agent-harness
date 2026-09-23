@@ -1,0 +1,270 @@
+taxonomy_name: financial_services_sector_sub_sector_taxonomy
+version: 1.0
+classification_fields:
+  - sector
+  - sub_sector
+  - keywords
+entries:
+  - sector: Banking
+    sub_sector: Retail
+    keywords:
+      - retail banking
+      - consumer banking
+      - personal banking
+      - checking accounts
+      - savings accounts
+      - current accounts
+      - mortgages
+      - consumer lending
+      - retail finance
+      - branch banking
+      - retail deposits
+      - personal loans
+      - debit cards
+      - everyday banking
+
+  - sector: Banking
+    sub_sector: Commercial
+    keywords:
+      - commercial banking
+      - business banking
+      - SME banking
+      - corporate banking
+      - middle market lending
+      - commercial lending
+      - business loans
+      - working capital
+      - invoice financing
+      - trade finance
+      - cash flow lending
+      - treasury lending
+      - commercial finance
+
+  - sector: Banking
+    sub_sector: Transaction Banking
+    keywords:
+      - transaction banking
+      - treasury services
+      - treasury management
+      - cash management
+      - liquidity management
+      - payments infrastructure
+      - receivables
+      - payables
+      - trade services
+      - trade finance
+      - commercial payments
+      - global payments
+      - transaction services
+      - merchant acquiring
+
+  - sector: Banking
+    sub_sector: Private Banking
+    keywords:
+      - private banking
+      - private wealth
+      - wealth clients
+      - HNW
+      - UHNW
+      - ultra high net worth
+      - family wealth
+      - wealth advisory
+      - bespoke banking
+      - private client services
+      - discretionary wealth
+      - private client banking
+
+  - sector: Banking
+    sub_sector: Investment Banking
+    keywords:
+      - investment banking
+      - capital markets
+      - ECM
+      - DCM
+      - leveraged finance
+      - mergers and acquisitions
+      - M&A
+      - IPO advisory
+      - underwriting
+      - corporate finance
+      - structured finance
+      - advisory services
+      - debt advisory
+      - equity advisory
+
+  - sector: WAM/IM
+    sub_sector: Wealth Management
+    keywords:
+      - wealth management
+      - wealth advisory
+      - private wealth
+      - financial advisor
+      - financial planning
+      - retirement planning
+      - wealth platform
+      - high net worth
+      - HNW advisory
+      - wealth solutions
+      - RIA
+      - registered investment advisor
+
+  - sector: WAM/IM
+    sub_sector: Asset Management
+    keywords:
+      - asset management
+      - institutional investing
+      - fund management
+      - investment products
+      - ETF management
+      - mutual funds
+      - public markets investing
+      - portfolio solutions
+      - investment platform
+      - institutional asset management
+      - fund platform
+
+  - sector: WAM/IM
+    sub_sector: Investment Management
+    keywords:
+      - investment management
+      - portfolio management
+      - portfolio construction
+      - investment strategy
+      - discretionary management
+      - equity investing
+      - fixed income
+      - alternative investments
+      - multi-asset investing
+      - investment portfolios
+
+  - sector: WAM/IM
+    sub_sector: Family Office
+    keywords:
+      - family office
+      - single family office
+      - multi family office
+      - generational wealth
+      - family wealth management
+      - wealth preservation
+      - private investment office
+      - family investment management
+
+  - sector: Insurance
+    sub_sector: General
+    keywords:
+      - general insurance
+      - property and casualty
+      - P&C
+      - commercial insurance
+      - business insurance
+      - liability insurance
+      - home insurance
+      - auto insurance
+      - motor insurance
+      - casualty insurance
+      - insurance underwriting
+
+  - sector: Insurance
+    sub_sector: Life & Pensions
+    keywords:
+      - life insurance
+      - pensions
+      - retirement solutions
+      - annuities
+      - retirement income
+      - pension management
+      - employee benefits
+      - long-term savings
+      - wealth protection
+      - retirement advisory
+
+  - sector: Insurance
+    sub_sector: Specialty
+    keywords:
+      - specialty insurance
+      - specialty underwriting
+      - cyber insurance
+      - marine insurance
+      - aviation insurance
+      - excess and surplus
+      - E&S
+      - reinsurance
+      - complex risk
+      - specialty risk
+
+  - sector: Fintech/Challengers
+    sub_sector: Fintech
+    keywords:
+      - fintech
+      - financial technology
+      - embedded finance
+      - banking-as-a-service
+      - BaaS
+      - open banking
+      - API banking
+      - digital finance
+      - fintech platform
+      - financial infrastructure
+      - financial APIs
+
+  - sector: Fintech/Challengers
+    sub_sector: Challengers
+    keywords:
+      - challenger bank
+      - neobank
+      - digital bank
+      - mobile banking
+      - app-based banking
+      - branchless banking
+      - digital-first banking
+      - online banking platform
+      - virtual bank
+
+  - sector: Fintech/Challengers
+    sub_sector: EMI
+    keywords:
+      - EMI
+      - electronic money institution
+      - e-money
+      - digital wallet
+      - stored value
+      - wallet infrastructure
+      - licensed EMI
+      - payment wallet
+      - prepaid accounts
+
+  - sector: Fintech/Challengers
+    sub_sector: Payment Firms
+    keywords:
+      - payments
+      - payment processing
+      - payment gateway
+      - PSP
+      - payment service provider
+      - merchant services
+      - merchant acquiring
+      - card issuing
+      - card acquiring
+      - payment infrastructure
+      - payment orchestration
+      - cross-border payments
+      - B2B payments
+      - real-time payments
+
+  - sector: Fintech/Challengers
+    sub_sector: Crypto/VA
+    keywords:
+      - crypto
+      - cryptocurrency
+      - blockchain
+      - digital assets
+      - virtual assets
+      - tokenization
+      - custody
+      - stablecoins
+      - DeFi
+      - web3
+      - crypto exchange
+      - digital asset infrastructure
+      - crypto custody
+      - blockchain infrastructure

@@ -23,6 +23,10 @@ transcripts/
 # Workflow run outputs (per-run subfolders under output/)
 output/
 
+# other data
+data/
+docs/.no-commit
+
 # macOS
 .DS_Store
 
