@@ -28,9 +28,9 @@ Both `agent.py` and `cli_agent.py` construct a **deepagents** agent (`create_dee
 
 When modifying agent construction, keep both files in sync unless intentionally diverging — they share the same tool and backend conventions.
 
-### 2. Skills library (`skills/*.skill`)
+### 2. Skills library (`skills/<name>/`)
 
-Six packaged skills (zip archives, each containing `SKILL.md` + `references/`) that form an opinionated end-to-end playbook for production agent harnesses on the **LangGraph + LangSmith + RAGAS + DeepEval + NeMo/Guardrails AI** stack. They split by lifecycle phase and cross-reference each other:
+Six skills (each a folder containing `SKILL.md` + `references/`) that form an opinionated end-to-end playbook for production agent harnesses on the **LangGraph + LangSmith + RAGAS + DeepEval + NeMo/Guardrails AI** stack. They split by lifecycle phase and cross-reference each other:
 
 | Skill | Phase | Purpose |
 |---|---|---|

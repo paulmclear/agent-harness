@@ -12,12 +12,14 @@ dependencies = [
     "langchain-openai>=1.1.12",
     "langchain-perplexity>=1.2.0",
     "langgraph-checkpoint-sqlite>=2.0.0",
+    "pydantic-settings>=2.15.0",
     "python-docx>=1.2.0",
     "python-dotenv>=1.2.2",
     "pyyaml>=6.0.3",
     "sqlalchemy>=2.0",
     "tavily-python>=0.7.23",
     "typesafe-ai>=0.1.0",
+    "typesafe-sdk>=0.7.1",
 ]
 
 [dependency-groups]

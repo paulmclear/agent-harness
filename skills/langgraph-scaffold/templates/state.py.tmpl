@@ -1,0 +1,19 @@
+from typing import TypedDict
+
+
+class InputState(TypedDict):
+    """Keys accepted by ``graph.invoke``. Everything else is derived by nodes."""
+
+    # control
+    debug: bool
+
+    # input data
+    topic: str
+
+
+class State(InputState):
+    # derived data
+    example_agent_output: str
+
+    # output data
+    file_path: str

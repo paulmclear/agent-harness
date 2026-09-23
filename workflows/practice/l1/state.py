@@ -17,6 +17,7 @@ class State(TypedDict):
     policy_chunks: list[PolicyChunk]
 
     risk_assessment_output: str
+    risk_assessment_qa_output: dict
 
     # output data
     report: str

@@ -47,4 +47,13 @@ def build_report_node(state: State) -> dict:
         "",
     ]
 
+    lines += [
+        "---",
+        "",
+        "# Part 3 — Analyst QA Results",
+        "",
+        str(state["risk_assessment_qa_output"]).strip(),
+        "",
+    ]
+
     return {"report": "\n".join(lines)}

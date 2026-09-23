@@ -10,6 +10,7 @@ from workflows.practice.l1.nodes.calculate_risk_node import calculate_risk_node
 from workflows.practice.l1.nodes.get_customer_node import get_customer_node
 from workflows.practice.l1.nodes.search_policy_node import search_policy_node
 from workflows.practice.l1.nodes.write_report_to_file_node import write_report_to_file_node
+from workflows.practice.l1.nodes.risk_assessment_qa_node import risk_assessment_qa_node
 from workflows.practice.l1.agents.risk_assessment_agent import risk_assessment_node
 from workflows.practice.l1.state import State
 
@@ -31,6 +32,7 @@ def build_graph(output_image: bool = False) -> StateGraph[State]:
     workflow_builder.add_node("search_policy", search_policy_node)
     workflow_builder.add_node("build_report", build_report_node)
     workflow_builder.add_node("risk_assessment", risk_assessment_node)
+    workflow_builder.add_node("risk_assessment_qa", risk_assessment_qa_node)
     workflow_builder.add_node("write_report_to_file", write_report_to_file_node)
 
     # edges
@@ -38,7 +40,8 @@ def build_graph(output_image: bool = False) -> StateGraph[State]:
     workflow_builder.add_edge("get_customer", "calculate_risk")
     workflow_builder.add_edge("calculate_risk", "search_policy")
     workflow_builder.add_edge("search_policy", "risk_assessment")
-    workflow_builder.add_edge("risk_assessment", "build_report")
+    workflow_builder.add_edge("risk_assessment", "risk_assessment_qa")
+    workflow_builder.add_edge("risk_assessment_qa", "build_report")
     workflow_builder.add_edge("build_report", "write_report_to_file")
     workflow_builder.add_edge("write_report_to_file", END)
 
