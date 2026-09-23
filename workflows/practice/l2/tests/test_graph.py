@@ -55,7 +55,7 @@ class FakeTypeSafeClient:
 def fake_typesafe(monkeypatch):
     """Install a fake TypeSafe client with the given answers; returns an installer."""
 
-    def install(security_probability: float) -> None:
+    def install(security_probability: float, relevance: str = "direct") -> None:
         client = FakeTypeSafeClient(
             nouls={"has_security_implications": security_probability},
             choices={
@@ -63,7 +63,7 @@ def fake_typesafe(monkeypatch):
                 "ticket_category": ("vpn", 0.92),
                 "ticket_priority": ("high", 0.81),
             },
-            default_choice=("direct", 0.9),
+            default_choice=(relevance, 0.9),
         )
         for module in (
             classify_security_risk_node,
@@ -94,7 +94,9 @@ def test_graph_compiles():
         "kb_lookup",
         "grade_articles",
         "security_handoff",
+        "kb_search_agent",
         "triage_agent",
+        "build_triage_output",
     } <= set(graph.nodes)
 
 
@@ -123,5 +125,29 @@ def test_ordinary_ticket_takes_triage_path(fake_typesafe, ticket):
     candidate_ids = [a.article_id for a in result["kb_candidates"]]
     assert candidate_ids
     assert [g.article_id for g in result["graded_articles"]] == candidate_ids
-    # usable articles route to triage_agent, which skips the model in debug mode
+    # a direct article routes straight to triage_agent (no escalation), which
+    # skips the model in debug mode
+    assert "kb_escalated" not in result
     assert result["triage_draft"] is None
+    # both paths converge on TriageOutput
+    output = result["triage_output"]
+    assert output.ticket_id == "T001"
+    assert output.assigned_team == "Network Operations"
+    # no draft in debug mode, so no grounded reply: review lane
+    assert output.suggested_response is None
+    assert output.needs_human_review is True
+
+
+def test_no_direct_article_escalates_once_then_builds_output(fake_typesafe, ticket):
+    fake_typesafe(security_probability=0.1, relevance="none")
+
+    result = build_graph().invoke({"ticket": ticket, "debug": True})
+
+    # escalated once; nothing usable came back, so no draft was attempted
+    assert result["kb_escalated"] is True
+    assert result["kb_candidates"] == []
+    assert "triage_draft" not in result
+    output = result["triage_output"]
+    assert output.suggested_response is None
+    assert output.knowledge_articles is None
+    assert output.needs_human_review is True

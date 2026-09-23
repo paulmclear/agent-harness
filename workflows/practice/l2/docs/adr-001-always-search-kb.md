@@ -47,4 +47,5 @@ Chosen: **B with C as a fallback**.
 
 - **Positive:** every suggested response is grounded or absent. Relevance becomes an explicit signal for the `human_action` / `human_review` decision. Most tickets make no agent calls.
 - **Negative:** deviates from the written requirement and needs sign-off. Tickets that escalate take longer and cost more. Article selection on escalated tickets varies between runs (accepted; we measure precision and recall and revisit if evals show too much variation).
-- **Follow-ups:** build `kb_search_agent`, `triage_writer`, `build_triage_output`, and the post-grading routing; move the `human_action` thresholds into `config.py`; add per-step eval datasets.
+- **Implemented (2026-09-23):** `kb_lookup`, `grade_articles`, `kb_search_agent`, `triage_agent` (the writer), `build_triage_output`, and `route_after_grading`. The `human_action` thresholds live in `config.py`. One tightening from the original design: the reply must *cite* a `direct` article, not just have one available.
+- **Follow-ups:** per-step eval datasets (grading precision, agent recovery on misses, writer faithfulness), and a check of how much article selection varies between runs.

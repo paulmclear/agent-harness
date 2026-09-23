@@ -29,6 +29,8 @@ def make_agent_node(
     model: str | None = None,
     response_format: type[BaseModel] | None = None,
     prompt_inputs: Callable[[State], Mapping[str, Any]] | None = None,
+    middleware: Callable[[], Sequence[Any]] | None = None,
+    parse_response: Callable[[dict], Any] | None = None,
 ) -> Callable[[State], dict]:
     """Build a LangGraph node that runs a single-turn agent.
 
@@ -43,6 +45,11 @@ def make_agent_node(
         prompt_inputs: Builds the template values from the state. Defaults to
             the state itself; use it when the prompt needs derived or
             pre-formatted values rather than raw state keys.
+        middleware: Returns the agent middleware (e.g. tool-call limits).
+            Called when the agent is first built, so it can read settings.
+        parse_response: Maps the raw agent response to the value written to
+            state, overriding the default (structured response or final text).
+            In debug mode the node skips the model and this hook.
 
     The agent is built on first real call, so importing the graph or running
     in debug mode never needs API keys.
@@ -56,6 +63,7 @@ def make_agent_node(
             model=model or get_settings().default_model,
             tools=list(tools) or None,
             response_format=response_format,
+            middleware=list(middleware()) if middleware else (),
         )
 
     def node(state: State) -> dict:
@@ -67,6 +75,8 @@ def make_agent_node(
             return {output_state_key: None if response_format else ""}
 
         response = get_agent().invoke({"messages": [HumanMessage(content=user_prompt)]})
+        if parse_response:
+            return {output_state_key: parse_response(response)}
         if response_format:
             return {output_state_key: response["structured_response"]}
         return {output_state_key: response["messages"][-1].content}

@@ -1,6 +1,17 @@
 from typing import TypedDict
 
-from workflows.practice.l2.models import SecurityAssessment, SupportCategory, SupportTicket, TriageOutput, Employee, Device, KnowledgeBaseArticle, GradedArticle, TriageDraft
+from workflows.practice.l2.models import (
+    Device,
+    Employee,
+    GradedArticle,
+    KnowledgeBaseArticle,
+    SecurityAssessment,
+    SupportCategory,
+    SupportPriority,
+    SupportTicket,
+    TriageDraft,
+    TriageOutput,
+)
 
 
 class InputState(TypedDict):
@@ -22,11 +33,12 @@ class State(InputState):
     security_assessment: SecurityAssessment
     ticket_category: SupportCategory
     ticket_category_confidence: float
-    ticket_priority: str
+    ticket_priority: SupportPriority
     ticket_priority_confidence: float
 
     kb_candidates: list[KnowledgeBaseArticle]
     graded_articles: list[GradedArticle]
+    kb_escalated: bool  # set by kb_search_agent; allows one escalation per ticket
     triage_draft: TriageDraft | None
 
     # output data

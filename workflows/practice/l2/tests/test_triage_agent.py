@@ -1,5 +1,4 @@
 import pytest
-from langgraph.graph import END
 
 from workflows.practice.l2.agents import _base
 from workflows.practice.l2.agents._base import make_agent_node
@@ -79,18 +78,34 @@ def state():
 # --- routing -----------------------------------------------------------------
 
 
-def test_routes_to_triage_agent_when_any_article_is_usable(state):
+def test_direct_article_goes_straight_to_triage_agent(state):
     assert route_after_grading(state) == "triage_agent"
 
 
-def test_skips_triage_agent_when_no_article_is_usable(state):
+@pytest.mark.parametrize(
+    "graded",
+    [
+        [],
+        [_graded("kb-vpn-005", ArticleRelevance.none)],
+        [_graded("kb-vpn-002", ArticleRelevance.partial)],
+    ],
+    ids=["nothing", "none-only", "partial-only"],
+)
+def test_no_direct_article_escalates_once(state, graded):
+    state["graded_articles"] = graded
+    assert route_after_grading(state) == "kb_search_agent"
+
+
+def test_after_escalation_partial_articles_still_get_a_draft(state):
+    state["kb_escalated"] = True
+    state["graded_articles"] = [_graded("kb-vpn-002", ArticleRelevance.partial)]
+    assert route_after_grading(state) == "triage_agent"
+
+
+def test_after_escalation_nothing_usable_skips_the_draft(state):
+    state["kb_escalated"] = True
     state["graded_articles"] = [_graded("kb-vpn-005", ArticleRelevance.none)]
-    assert route_after_grading(state) == END
-
-
-def test_skips_triage_agent_when_nothing_was_graded(state):
-    state["graded_articles"] = []
-    assert route_after_grading(state) == END
+    assert route_after_grading(state) == "build_triage_output"
 
 
 # --- prompt inputs -----------------------------------------------------------

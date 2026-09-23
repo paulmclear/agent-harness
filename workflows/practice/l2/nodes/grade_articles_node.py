@@ -1,6 +1,5 @@
 import logging
 
-from langgraph.graph import END
 from typesafe_sdk import Choice, TypeSafeClient
 
 from workflows.practice.l2.models import ArticleRelevance, GradedArticle
@@ -82,8 +81,18 @@ def grade_articles_node(state: State) -> dict:
 
 
 def route_after_grading(state: State) -> str:
-    """Draft a reply only if grading found something usable to ground it on."""
-    usable = {ArticleRelevance.direct, ArticleRelevance.partial}
-    if any(g.relevance in usable for g in state["graded_articles"]):
+    """Pick the next step from the grades (ADR-001).
+
+    - any ``direct`` article: draft the reply
+    - otherwise, escalate to ``kb_search_agent`` once
+    - after escalating: draft from ``partial`` articles if any, else build the
+      output with no suggested reply
+    """
+    relevances = {g.relevance for g in state["graded_articles"]}
+    if ArticleRelevance.direct in relevances:
         return "triage_agent"
-    return END
+    if not state.get("kb_escalated"):
+        return "kb_search_agent"
+    if ArticleRelevance.partial in relevances:
+        return "triage_agent"
+    return "build_triage_output"
