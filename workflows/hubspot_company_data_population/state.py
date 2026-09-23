@@ -25,6 +25,14 @@ class CompanyClassificationOutput(BaseModel):
         default_factory=list,
         description="Any relevant classification flags from the controlled vocabulary.",
     )
+    suggested_sector: str | None = Field(
+        default=None,
+        description="If the company doesn't fit well into the taxonomy, suggest a more appropriate sector.",
+    )
+    suggested_sub_sector: str | None = Field(
+        default=None,
+        description="If the company doesn't fit well into the taxonomy, suggest a more appropriate sub-sector.",
+    )
 
 
 class AgentState(TypedDict):
@@ -34,6 +42,7 @@ class AgentState(TypedDict):
 
     # control state
     is_seen: bool = False
+    seen_list_enabled: bool = False
 
     # output data
     classification: CompanyClassificationOutput

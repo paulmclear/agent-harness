@@ -15,11 +15,12 @@ load_dotenv()
 SYSTEM_PROMPT_TEMPLATE = """
 You are a company sector classification agent.
 
+## Instructions
 Use the following skill instructions:
 
 {skill_instructions}
 
-Reference taxonomy:
+## Taxonomy
 
 {taxonomy}
 """
@@ -58,7 +59,8 @@ def classify_company_node(state: dict) -> dict:
         return {"classification": None}
 
     message = HumanMessage(
-        content=f"Classify the following company into a sector: {company_name}")
+        content=f"Classify the following company into a sector: {company_name}"
+    )
 
     response = get_classifier_agent().invoke({"messages": [message]})
 

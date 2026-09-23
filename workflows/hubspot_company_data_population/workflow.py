@@ -34,7 +34,6 @@ def build_graph() -> CompiledStateGraph:
         "done": "add_to_seen_list",
     })
     graph.add_edge("web_search_node", "add_to_seen_list")
-    graph.add_edge("add_to_seen_list", END)
 
     return graph.compile()
 
@@ -43,16 +42,28 @@ if __name__ == "__main__":
     graph = build_graph()
 
     hubspot = HubSpotService()
-    companies = hubspot.list_companies(limit=120)
+    companies = hubspot.list_companies(limit=3000)
+
+    initial_control_state = {
+        "seen_list_enabled": True,
+    }
 
     repo = HubSpotCompanyRepository(db_path="data/hubspot_companies.db")
 
+    with open("workflows/hubspot_company_data_population/seen_companies.txt", "r") as f:
+        seen_companies = set([c for c in f.read().splitlines() if c.strip()])
+
     for company in companies:
+
+        # skip if company name is in seen companies list
+        if company['properties'].get('name') in seen_companies:
+            print(f"Skipping company {company['properties'].get('name')} as it is in the seen companies list.")
+            continue
 
         company_name = company['properties']['name']
         hubspot_id = company['id']
 
-        initial_state = {
+        initial_state = initial_control_state | {
             "company_name": company_name
         }
 
@@ -62,8 +73,8 @@ if __name__ == "__main__":
 
         if final_state.get("classification"):
             repo.add_company(
-                name=company_name, 
-                hubspot_id=hubspot_id, 
+                name=company_name,
+                hubspot_id=hubspot_id,
                 data=final_state['classification'].model_dump()
             )
 

@@ -11,7 +11,7 @@ SEEN_LIST_PATH = Path(
 )
 
 
-def check_seen_list_router(state: AgentState):
+def check_seen_list_router(state: AgentState) -> bool:
     """
     Check if the company has already been processed by this workflow.
 
@@ -22,9 +22,13 @@ def check_seen_list_router(state: AgentState):
 
     company_name = state['company_name']
 
+    if not state.get("seen_list_enabled", True):
+        print("Seen list check is disabled. Processing all companies as new.")
+        return False
+
     if not SEEN_LIST_PATH.exists():
         SEEN_LIST_PATH.touch()
-        return {'is_seen': False}
+        return False
 
     with SEEN_LIST_PATH.open("r") as f:
         seen_list = [line.strip() for line in f.readlines()]

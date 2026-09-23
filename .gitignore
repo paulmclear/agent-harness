@@ -25,6 +25,7 @@ output/
 
 # other data
 data/
+docs/.no-commit
 
 # macOS
 .DS_Store
